@@ -42,13 +42,14 @@ app.get("/api/classify-number", async (req, res) => {
 
   // Function to check Armstrong number
   const isArmstrong = (n) => {
-    const digits = n.toString().split("").map(Number);
+    const absN = Math.abs(n);
+    const digits = absN.toString().split("").map(Number);
     const power = digits.length;
-    return digits.reduce((sum, d) => sum + Math.pow(d, power), 0) === n;
+    return digits.reduce((sum, d) => sum + Math.pow(d, power), 0) === absN;
   };
 
   // Sum of digits
-  const digitSum = num
+  const digitSum = Math.abs(num)
     .toString()
     .split("")
     .reduce((sum, digit) => sum + parseInt(digit), 0);
